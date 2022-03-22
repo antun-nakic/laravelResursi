@@ -1,10 +1,12 @@
-<form method="POST" action="
-@isset($kompanija)
-  {{ route('flights.update', ['flight'=>16]) }}
-@else
-  {{ route('flights.store') }}
-@endisset
-">
+<form method="POST" @isset($kompanija) action="
+  {{ route('flights.update', ['flight'=>$id]) }}" @else action="
+  {{$kompanija = ""}}
+  {{$destinacija = ""}}
+  {{ route('flights.store') }}" @endisset>
+
+  @if($kompanija != "")
+  @method('PUT')
+  @endif
   @csrf
 
   <!-- Aviokompanija -->

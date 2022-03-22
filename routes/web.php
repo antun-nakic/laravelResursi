@@ -26,5 +26,6 @@ Route::get('/dashboard', function () {
 Route::resource('box', BoxController::class);
 
 Route::resource('flights', FlightController::class);
+//Route::post('/flights/{flight}', [FlightController::class, 'update'])->name('flights.mojupdate');
 
 require __DIR__ . '/auth.php';

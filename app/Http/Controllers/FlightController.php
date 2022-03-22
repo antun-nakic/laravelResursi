@@ -16,7 +16,7 @@ class FlightController extends Controller
     {
         //var_dump(Flight::all());
         foreach (Flight::all() as $flight) {
-            echo $flight->aviokompanija . " " . $flight->destinacija . "<br/>";
+            echo $flight->aviokompanija . " ----- " . $flight->destinacija . "<br/>";
         }
     }
 
@@ -57,7 +57,8 @@ class FlightController extends Controller
     public function show($id)
     {
         $red = Flight::find($id);
-        echo $red->aviokompanija . " - " . $red->destinacija . " - " . $red->created_at;
+        //echo $red->aviokompanija . " - " . $red->destinacija . " - " . $red->created_at;
+        return view('flight.prikaz')->with(['kompanija' => $red->aviokompanija, 'destinacija' => $red->destinacija, 'id' => $red->id]);
     }
 
     /**
@@ -69,7 +70,7 @@ class FlightController extends Controller
     public function edit($id)
     {
         $red = Flight::find($id);
-        return view('flight.unos')->with(['kompanija' => $red->aviokompanija, 'destinacija' => $red->destinacija]);
+        return view('flight.unos')->with(['kompanija' => $red->aviokompanija, 'destinacija' => $red->destinacija, 'id' => $red->id]);
     }
 
     /**
@@ -81,7 +82,12 @@ class FlightController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $red = Flight::find($id);
+        $red->aviokompanija = $request->aviokompanija;
+        $red->destinacija = $request->destinacija;
+        $red->save();
+
+        echo "Sve 5";
     }
 
     /**
@@ -92,6 +98,9 @@ class FlightController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $red = Flight::find($id);
+        $red->delete();
+
+        echo "Uspiješno ste izbrisali let sa id-jem $id";
     }
 }
