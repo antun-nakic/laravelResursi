@@ -14,10 +14,24 @@ class FlightController extends Controller
      */
     public function index()
     {
+        $content = "";
+        $type = "text/html";
+
         //var_dump(Flight::all());
         foreach (Flight::all() as $flight) {
-            echo $flight->aviokompanija . " ----- " . $flight->destinacija . "<br/>";
+            $content .= $flight->aviokompanija . " ----- " . $flight->destinacija . "<br/>";
         }
+
+        return response($content)
+            ->withHeaders([
+                'Content-Type' => $type,
+                'X-Header-One' => 'Header Value',
+                'X-Header-Two' => 'Header Value',
+            ])->cookie(
+                'mojDrugiCookie',
+                'krempita',
+                '60'
+            );
     }
 
     /**
@@ -27,7 +41,9 @@ class FlightController extends Controller
      */
     public function create()
     {
-        return view('flight.unos');
+        return redirect()->away('https://www.google.com');
+        //return redirect()->action([FlightController::class, 'index']);
+        //return view('flight.unos');
     }
 
     /**

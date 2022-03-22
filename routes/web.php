@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\BoxController;
 use App\Http\Controllers\FlightController;
+use App\Models\User;
 
 /*
 |--------------------------------------------------------------------------
@@ -19,6 +20,10 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::get('/user/{user}', function (User $user) {
+    return $user;
+});
+
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth'])->name('dashboard');
@@ -27,5 +32,13 @@ Route::resource('box', BoxController::class);
 
 Route::resource('flights', FlightController::class);
 //Route::post('/flights/{flight}', [FlightController::class, 'update'])->name('flights.mojupdate');
+
+Route::get('/hello', function () {
+    return 'Hello World';
+});
+
+Route::get('/polje', function () {
+    return [1, 2, 3];
+});
 
 require __DIR__ . '/auth.php';
