@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Flight;
+use Illuminate\Support\Facades\View;
 
 class FlightController extends Controller
 {
@@ -34,6 +35,11 @@ class FlightController extends Controller
             );
     }
 
+    public function posebna()
+    {
+        return View::first(['flight.sime.admin', 'flight.admin']);
+    }
+
     /**
      * Show the form for creating a new resource.
      *
@@ -42,7 +48,8 @@ class FlightController extends Controller
     public function create()
     {
         return redirect()->away('https://www.google.com');
-        //return redirect()->action([FlightController::class, 'index']);
+        //
+        return redirect()->action([FlightController::class, 'index']);
         //return view('flight.unos');
     }
 
@@ -72,9 +79,10 @@ class FlightController extends Controller
      */
     public function show($id)
     {
-        $red = Flight::find($id);
+        //$red = Flight::find($id);
         //echo $red->aviokompanija . " - " . $red->destinacija . " - " . $red->created_at;
-        return view('flight.prikaz')->with(['kompanija' => $red->aviokompanija, 'destinacija' => $red->destinacija, 'id' => $red->id]);
+        return view('flight.prikaz');
+        //->with(['kompanija' => $red->aviokompanija, 'destinacija' => $red->destinacija, 'id' => $red->id]);
     }
 
     /**

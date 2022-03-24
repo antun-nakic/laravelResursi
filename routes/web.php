@@ -32,6 +32,7 @@ Route::resource('box', BoxController::class);
 
 Route::resource('flights', FlightController::class);
 //Route::post('/flights/{flight}', [FlightController::class, 'update'])->name('flights.mojupdate');
+Route::get('/sime', [FlightController::class, 'posebna']);
 
 Route::get('/hello', function () {
     return 'Hello World';

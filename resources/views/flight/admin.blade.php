@@ -1,0 +1,1 @@
+<h1>Ovaj view je serviran iz foldera flight.admin {{$mojaVarijabla}}</h1>
