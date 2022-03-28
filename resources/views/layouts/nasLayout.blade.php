@@ -94,8 +94,23 @@
   @stack('skripte')
 </head>
 
-<body>
+<body style="display: flex;flex-direction:column">
+  @php
+  $popuni ="Evo me";
+  echo $popuni;
+  @endphp
+
+  <x-alert data-controller="moj" a="Prvi parametar" :b="date(DATE_RFC2822)" class="mojaKlasa" />
+
+  <x-nevracam-view> hjdgfjshd jkdgfjkdshg </x-nevracam-view>
+
   @include('layouts.zaglavlje')
+
+  @each('zaEachPriprema', ['Kruh','Mlijeko','Kava'],'job')
+
+  @foreach (['Kruh','Mlijeko','Kava'] as $key => $job)
+  @include('zaEachPriprema', ['job'=>$job, 'key'=>$key])
+  @endforeach
 
   @yield('sadrzaj')
 </body>
