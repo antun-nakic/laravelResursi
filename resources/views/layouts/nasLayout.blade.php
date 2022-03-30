@@ -100,7 +100,17 @@
   echo $popuni;
   @endphp
 
-  <x-alert data-controller="moj" a="Prvi parametar" :b="date(DATE_RFC2822)" class="mojaKlasa" />
+  <x-alert hehe="jfhdkfjg" data-controller="moj" a="Prvi parametar" :b="date(DATE_RFC2822)" class="mojaKlasa">
+    <x-slot:title>
+      {{ $component->formatAlert('Server Error') }}
+      </x-slot>
+      <x-slot:frane visina="jdhf" class="font-bold">
+        Frane je najbolji!
+        </x-slot>
+        <p>hdgfhdsgfhdsfjhdjkfjkdsjkdshf</p>
+  </x-alert>
+
+  <x-gkgk />
 
   <x-nevracam-view> hjdgfjshd jkdgfjkdshg </x-nevracam-view>
 

@@ -42,4 +42,8 @@ Route::get('/polje', function () {
     return [1, 2, 3];
 });
 
+Route::get('/probavam', function () {
+    return view('components.vijest.index');
+});
+
 require __DIR__ . '/auth.php';

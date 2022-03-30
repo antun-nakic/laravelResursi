@@ -6,9 +6,12 @@ use Illuminate\View\Component;
 
 class Alert extends Component
 {
-
     public $a;
     public $b;
+    public function formatAlert($hhh)
+    {
+        return $hhh;
+    }
     /**
      * Create a new component instance.
      *
